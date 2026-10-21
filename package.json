@@ -5,7 +5,7 @@
   "description": "Static Splatico game landing page built with Tailwind CSS.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "dev": "npm run build && python3 -m http.server 4173 --bind 127.0.0.1 --directory dist"
+    "dev": "node scripts/dev.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.0",

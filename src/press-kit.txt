@@ -11,7 +11,7 @@ FEATURES
 - Chaos events change the conditions during a round.
 - Character customization with hats, faces, face colors, and emotes.
 - Built-in voxel map editor with custom block, prop, asset, and decal imports.
-- Splatico Blockbench plugin for creating props and static scenery.
+- Learn about creating custom maps: https://splatico.fandom.com/wiki/Getting_Started
 - Steam Workshop map sharing with custom content included.
 
 CONTACT

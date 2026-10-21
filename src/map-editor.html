@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0a0c">
+    <meta name="description" content="Build voxel maps, import custom blocks, props, assets, and decals, and share your maps on Steam Workshop.">
+    <title>Map Editor | Splatico</title>
+    <link rel="icon" href="./assets/favicon.png">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- SITE_HEADER -->
+    <main id="main" class="feature-page">
+      <section class="shell feature-hero grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <h1>Create <span class="purple-text">custom maps</span></h1>
+          <p>Build your own Splatico map with the map editor and share on Steam workshop for others to play.</p>
+          <div class="editor-hero-actions flex flex-wrap gap-4">
+            <a class="pixel-button button-orange" href="https://steamcommunity.com/app/4952770/workshop/" target="_blank" rel="noopener noreferrer"><img class="icon" src="./assets/steam.svg" alt="" />Browse Workshop</a>
+            <a class="pixel-button button-purple" href="https://splatico.fandom.com/wiki/Getting_Started" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8.123.008a.431.431 0 00-.512.42v9.746L4.104 6.666a.432.432 0 00-.66.064.428.428 0 00-.071.239v10.064a2.387 2.387 0 00.701 1.694l4.565 4.57a2.4 2.4 0 001.693.703h3.34c.635 0 1.242-.252 1.691-.701l4.565-4.572a2.394 2.394 0 00.699-1.694V13.41a2.39 2.39 0 00-.7-1.693L8.343.125a.427.427 0 00-.219-.117zM9.646 12.51a.719.719 0 01.508.21l1.848 1.85 1.844-1.85a.714.714 0 011.015 0l1.32 1.321a.724.724 0 01.212.508v1.406a.72.72 0 01-.21.508l-3.68 3.7a.72.72 0 01-1.019 0l-3.668-3.7a.716.716 0 01-.209-.506v-1.408a.71.71 0 01.211-.506l1.32-1.322a.713.713 0 01.508-.211Z"/></svg>Learn more</a>
+          </div>
+        </div>
+        <div class="feature-image">
+          <img class="" src="./assets/map-editor.png" alt="Splatico map editor with its asset browser open" loading="lazy">
+        </div>
+      </section>
+      <section class="shell section-space">
+        <div class="section-heading">
+          <h2>Voxel <span class="text-orange">map editor</span></h2>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="detail-card">
+            <h3>Build A Layout</h3>
+            <p>Shape rooms, floors, pools, and entire worlds.</p>
+          </article>
+          <article class="detail-card">
+            <h3>Add props</h3>
+            <p>Place furniture, decorations, and plenty of distractions.</p>
+          </article>
+          <article class="detail-card">
+            <h3>Set the scene</h3>
+            <p>Change the sky, lighting, fog, and weather.</p>
+          </article>
+          <article class="detail-card">
+            <h3>Publish</h3>
+            <p>Place spawns and test your hiding spots in the game.</p>
+          </article>
+        </div>
+      </section>
+      <section id="custom-content" class="shell section-space editor-imports">
+        <div class="section-heading">
+          <div>
+            <h2>Add <span class="purple-text">custom content</span></h2>
+          </div>
+          <p class="section-intro">Import custom blocks, props/assets (using <a href="https://splatico.fandom.com/wiki/Splatico_Blockbench_Plugin" target="_blank" class="text-orange underline!">Blockbench</a>), and decals with only a few clicks.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="detail-card import-card import-orange">
+            <div class="import-image">
+              <img class="" src="./assets/blocks-import.png" alt="Splatico custom block importer showing a brick texture and five block shapes" loading="lazy">
+            </div>
+            <div class="import-copy">
+              <h3>Custom blocks</h3>
+              <p>Import your texture (16x16px) and watch Splatico automatically create cube,slab,stairs, ramp and wall block variants.</p>
+            </div>
+          </article>
+          <article class="detail-card import-card import-purple">
+            <div class="import-image">
+              <img class="" src="./assets/props-import.png" alt="A custom wooden chair preview in the Splatico prop importer" loading="lazy">
+            </div>
+            <div class="import-copy">
+              <h3>Custom props</h3>
+              <p>Design props using our official Blockbench plugin and import it directly within the map editor.</p>
+            </div>
+          </article>
+          <article class="detail-card import-card import-blue">
+            <div class="import-image">
+              <img class="" src="./assets/assets-import.png" alt="A custom table preview in the Splatico asset importer" loading="lazy">
+            </div>
+            <div class="import-copy">
+              <h3>Custom assets</h3>
+              <p>Add your own static assets like chairs or statues to fill your map using our official Blockpench plugin.</p>
+            </div>
+          </article>
+          <article class="detail-card import-card import-pink">
+            <div class="import-image">
+              <img class="" src="./assets/decals-placement.png" alt="A rug made from custom decal tiles on a library floor" loading="lazy">
+            </div>
+            <div class="import-copy">
+              <h3>Custom decals</h3>
+              <p>Use decals to add more details like posters and variance to your map. Import your texture (16x16px) and import with one click.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section id="custom-map-guide" class="shell section-space compact-top">
+        <div class="detail-banner custom-maps-banner">
+          <div>
+            <h2>Learn how to <span class="purple-text">create your first map</span></h2>
+            <p>Visit the wiki to learn more about creating custom maps and importing your own blocks, props, assets, and decals.</p>
+            <a class="pixel-button button-purple" href="https://splatico.fandom.com/wiki/Getting_Started" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8.123.008a.431.431 0 00-.512.42v9.746L4.104 6.666a.432.432 0 00-.66.064.428.428 0 00-.071.239v10.064a2.387 2.387 0 00.701 1.694l4.565 4.57a2.4 2.4 0 001.693.703h3.34c.635 0 1.242-.252 1.691-.701l4.565-4.572a2.394 2.394 0 00.699-1.694V13.41a2.39 2.39 0 00-.7-1.693L8.343.125a.427.427 0 00-.219-.117zM9.646 12.51a.719.719 0 01.508.21l1.848 1.85 1.844-1.85a.714.714 0 011.015 0l1.32 1.321a.724.724 0 01.212.508v1.406a.72.72 0 01-.21.508l-3.68 3.7a.72.72 0 01-1.019 0l-3.668-3.7a.716.716 0 01-.209-.506v-1.408a.71.71 0 01.211-.506l1.32-1.322a.713.713 0 01.508-.211Z"/></svg>Learn more</a>
+          </div>
+        </div>
+      </section>
+      <section id="screenshots" class="shell" aria-label="Map screenshots">
+        <div class="gallery-stage">
+          <div class="gallery-image">
+            <img id="featured-shot" src="./assets/library.png" width="3840" height="2160" loading="lazy"
+              alt="Library map with tall bookshelves and a central fireplace" />
+            <button id="previous-shot" class="pixel-button button-dark gallery-arrow gallery-arrow-prev" type="button"
+              aria-label="Previous screenshot" aria-controls="featured-shot">
+              <svg viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                <path d="M14 2h4v4h-4v4h-4v4h4v4h4v4h-4v-4h-4v-4H6v-4h4V6h4Z" />
+              </svg>
+            </button>
+            <button id="next-shot" class="pixel-button button-dark gallery-arrow gallery-arrow-next" type="button"
+              aria-label="Next screenshot" aria-controls="featured-shot">
+              <svg viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+                <path d="M14 2h4v4h-4v4h-4v4h4v4h4v4h-4v-4h-4v-4H6v-4h4V6h4Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="gallery-thumbnails grid grid-cols-3 gap-3" aria-label="Choose a screenshot">
+          <button class="shot-thumbnail selected" type="button" aria-label="Show Library screenshot" aria-pressed="true"
+            data-alt="Library map with tall bookshelves and a central fireplace">
+            <span class="shot-content"><img src="./assets/library.png" width="3840" height="2160" loading="lazy"
+                alt="" /><span class="shot-name">Library</span></span>
+          </button>
+          <button class="shot-thumbnail" type="button" aria-label="Show Pool screenshot" aria-pressed="false"
+            data-alt="Voxel swimming pool with diving boards, lane ropes and scattered props">
+            <span class="shot-content"><img src="./assets/pool.png" width="3840" height="2160" loading="lazy"
+                alt="" /><span class="shot-name">Pool</span></span>
+          </button>
+          <button class="shot-thumbnail" type="button" aria-label="Show hiding places screenshot" aria-pressed="false"
+            data-alt="Library lounge with sofas, lamps, a chessboard and plenty of hiding places">
+            <span class="shot-content"><img src="./assets/editor.png" width="3840" height="2160" loading="lazy"
+                alt="" /><span class="shot-name">Library</span></span>
+          </button>
+        </div>
+      </section>
+      <section id="workshop" class="shell section-space">
+        <div class="community-panel">
+          <div class="community-copy">
+            <h2>Start <span class="text-orange">creating maps</span></h2>
+            <p>Get inspired and create maps with the community.</p>
+          <div class="flex flex-wrap gap-4 community-links">
+            <a class="pixel-button button-discord" href="https://discord.gg/P88g5WmsQS" target="_blank"
+              rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>Join Discord</a><a class="pixel-button button-orange"
+              href="https://x.com/splatico_game" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.154h7.594l5.243 6.932 6.064-6.933zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z" />
+              </svg>Follow</a><a class="pixel-button button-reddit"
+              href="https://www.reddit.com/r/Splatico/" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z"/></svg>Reddit</a>
+          </div>
+          </div>
+          <div class="community-illustration">
+            <img class="community-character" src="./assets/point.png" width="3840" height="2160" loading="lazy"
+              alt="A Splatico character pointing with a wink" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="shell site-footer flex flex-wrap items-center justify-between gap-5">
+      <div class="footer-brand"><a class="footer-name" href="./index.html">Splatico</a><span class="footer-copyright">© 2026 Splatico</span></div>
+      <div class="footer-links">
+        <a href="./index.html#press">Press & creators</a>
+        <a href="https://splatico.fandom.com/wiki/Splatico_Wiki" target="_blank" rel="noopener noreferrer">Wiki</a>
+        <a href="mailto:press@splaticogame.com">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>

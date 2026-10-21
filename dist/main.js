@@ -1,9 +1,8 @@
-// Replace these values when the store page and Splatico trailer are ready.
+// Steam buttons and launch year are configured in src/site-config.json.
+// Add the trailer's YouTube ID and change #play-video back to a <button> when the trailer is ready.
 const SITE_LINKS = {
-  steam: 'https://store.steampowered.com/',
-  youtubeVideoId: 'aqz-KE-bpKQ', // Big Buck Bunny: temporary sample video.
+  youtubeVideoId: '',
 };
-document.querySelectorAll('[data-link="steam"]').forEach(link => link.href = SITE_LINKS.steam);
 
 const siteHeader = document.querySelector('.site-header');
 if (siteHeader) {
@@ -28,10 +27,10 @@ if (siteHeader) {
   });
 }
 
-const playButton = document.querySelector('#play-video');
+const playButton = SITE_LINKS.youtubeVideoId ? document.querySelector('#play-video') : null;
 playButton?.addEventListener('click', () => {
   const iframe = document.createElement('iframe');
-  iframe.title = 'Placeholder video / Big Buck Bunny';
+  iframe.title = 'Splatico trailer';
   iframe.src = `https://www.youtube-nocookie.com/embed/${SITE_LINKS.youtubeVideoId}?autoplay=1&rel=0`;
   iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
   iframe.allowFullscreen = true;
@@ -40,66 +39,41 @@ playButton?.addEventListener('click', () => {
   iframe.focus();
 });
 
-const SHOTS = [
-  { src: './assets/library.png', caption: 'The Library', alt: 'Library map with tall bookshelves and a central fireplace' },
-  { src: './assets/pool.png', caption: 'Swimming Pool', alt: 'Voxel swimming pool with diving boards, lane ropes and scattered props' },
-  { src: './assets/editor.png', caption: 'Everyday hiding places', alt: 'Library lounge with sofas, lamps, a chessboard and plenty of hiding places' },
-];
-if (document.querySelector('#screenshot-dialog')) {
-let selectedShot = 0;
-const galleryDialog = document.querySelector('#screenshot-dialog');
-const galleryTrigger = document.querySelector('#open-shot');
+// Each thumbnail supplies its own image, and its data-alt text for the featured shot.
 const featuredShot = document.querySelector('#featured-shot');
-const dialogImage = document.querySelector('#dialog-image');
-const thumbnails = document.querySelectorAll('[data-shot]');
-function selectShot(index) {
-  selectedShot = (index + SHOTS.length) % SHOTS.length;
-  const shot = SHOTS[selectedShot];
-  [featuredShot, dialogImage].forEach(img => { img.src = shot.src; img.alt = shot.alt; });
-  document.querySelector('#shot-caption').textContent = shot.caption;
-  document.querySelector('#dialog-caption').textContent = shot.caption;
-  galleryTrigger.setAttribute('aria-label', `Enlarge ${shot.caption} screenshot`);
-  thumbnails.forEach(button => {
-    const isSelected = Number(button.dataset.shot) === selectedShot;
-    button.classList.toggle('selected', isSelected);
-    button.setAttribute('aria-pressed', String(isSelected));
+if (featuredShot) {
+  let selectedShot = 0;
+  const thumbnails = [...document.querySelectorAll('.shot-thumbnail')];
+  function selectShot(index) {
+    selectedShot = (index + thumbnails.length) % thumbnails.length;
+    const shot = thumbnails[selectedShot];
+    featuredShot.src = shot.querySelector('img').getAttribute('src');
+    featuredShot.alt = shot.dataset.alt;
+    thumbnails.forEach((button, i) => {
+      button.classList.toggle('selected', i === selectedShot);
+      button.setAttribute('aria-pressed', String(i === selectedShot));
+    });
+  }
+  thumbnails.forEach((button, i) => button.addEventListener('click', () => selectShot(i)));
+  document.querySelector('#previous-shot').addEventListener('click', () => selectShot(selectedShot - 1));
+  document.querySelector('#next-shot').addEventListener('click', () => selectShot(selectedShot + 1));
+  document.querySelector('#screenshots').addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    selectShot(selectedShot + (event.key === 'ArrowLeft' ? -1 : 1));
   });
+  selectShot(0);
 }
 
-thumbnails.forEach(button => button.addEventListener('click', () => selectShot(Number(button.dataset.shot))));
-galleryTrigger.addEventListener('click', () => {
-  selectShot(selectedShot);
-  galleryDialog.showModal();
-  document.body.classList.add('gallery-open');
-});
-document.querySelector('#close-gallery').addEventListener('click', () => galleryDialog.close());
-document.querySelector('#previous-shot').addEventListener('click', () => selectShot(selectedShot - 1));
-document.querySelector('#next-shot').addEventListener('click', () => selectShot(selectedShot + 1));
-galleryDialog.addEventListener('keydown', event => {
-  if (event.key === 'ArrowLeft') { event.preventDefault(); selectShot(selectedShot - 1); }
-  if (event.key === 'ArrowRight') { event.preventDefault(); selectShot(selectedShot + 1); }
-});
-galleryDialog.addEventListener('click', event => {
-  if (event.target !== galleryDialog) return;
-  const rect = galleryDialog.getBoundingClientRect();
-  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) galleryDialog.close();
-});
-galleryDialog.addEventListener('close', () => {
-  document.body.classList.remove('gallery-open');
-  galleryTrigger.focus();
-});
-
-}
-
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const parallaxImages = [...document.querySelectorAll('[data-parallax]')];
+const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
+if (parallaxItems.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   let pending = false;
   const updateParallax = () => {
-    parallaxImages.forEach(img => {
-      const rect = img.parentElement.getBoundingClientRect();
+    parallaxItems.forEach(item => {
+      const rect = item.parentElement.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > innerHeight) return;
       const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - innerHeight / 2) / innerHeight));
-      img.style.transform = `translateY(${progress * Number(img.dataset.parallax)}px)`;
+      item.style.transform = `translateY(${progress * Number(item.dataset.parallax)}px)`;
     });
     pending = false;
   };

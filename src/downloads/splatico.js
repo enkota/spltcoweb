@@ -31,7 +31,7 @@
         if (Outliner.elements.some(e => !(e instanceof Cube))) fail('Splatico models support cubes only.');
         if (!Texture.all.length || Texture.all.some(t => !integer(t.width) || !integer(t.height)
             || t.width < 1 || t.height < 1 || t.width > 1024 || t.height > 1024 || t.error))
-            fail('Textures must be loaded images no larger than 1024 × 1024. Larger atlases are allowed at 16× pixel density.');
+            fail('Textures must be loaded images no larger than 1024 x 1024. Larger atlases are allowed at 16x pixel density.');
         if (![Project.texture_width, Project.texture_height].every(n => integer(n) && n > 0))
             fail('Project UV dimensions must be positive whole numbers.');
         for (const group of Group.all) {
@@ -57,7 +57,7 @@
                 let size = side === 'up' || side === 'down' ? [x, z] : side === 'east' || side === 'west' ? [z, y] : [x, y];
                 if (face.rotation % 180) size.reverse();
                 if (Math.abs(pixels[2] - pixels[0]) > size[0] + .0001 || Math.abs(pixels[3] - pixels[1]) > size[1] + .0001)
-                    fail(`Cube "${cube.name}" exceeds 16× pixel density. Generate its texture template at 16×.`);
+                    fail(`Cube "${cube.name}" exceeds 16x pixel density. Generate its texture template at 16x.`);
             }
 
         }
@@ -240,7 +240,7 @@
         const asset = isAsset();
         new Dialog({ id: 'splatico_export', title: 'Export Splatico ' + (asset ? 'Asset' : 'Prop'),
             form: form(defaults()),
-            lines: [asset ? `Size in game: ${modelSize().map(n => Number(n.toFixed(3))).join(' × ')} meters (width × height × depth). Placement size is calculated automatically. Seats: ${seats().length} (Tools → Add Seats).`
+            lines: [asset ? `Size in game: ${modelSize().map(n => Number(n.toFixed(3))).join(' x ')} meters (width x height x depth). Placement size is calculated automatically. Seats: ${seats().length} (Tools → Add Seats).`
                 : 'Optional looping animations: idle when still, move when moving. Keep a .bbmodel copy to edit later.'],
             async onConfirm(data) {
                 try {
@@ -294,7 +294,7 @@
             fields.move = { label: 'Add optional move animation', type: 'checkbox', value: false };
         }
         new Dialog({ id: 'splatico_new', title: 'New Splatico ' + (asset ? 'Asset' : 'Prop'), form: fields,
-            lines: ['Whole-number cube coordinates. 16× pixel density; larger atlases supported. 16 units = one map cell.'],
+            lines: ['Whole-number cube coordinates. 16x pixel density; larger atlases supported. 16 units = one map cell.'],
             onConfirm(data) {
                 if (!/^[a-z0-9_]{1,80}$/.test(data.id) || !data.name.trim()) {
                     Blockbench.showMessageBox({ title: 'Invalid project details', message: 'Use a name and a lowercase ID.' });
