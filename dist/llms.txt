@@ -1,0 +1,37 @@
+# Splatico
+
+> Splatico (Survive the Hunt) is a multiplayer voxel prop hunt game for PC on Steam. Launching 2027. Props disguise themselves as objects on the map and hide, while hunters search for them with paint guns and air blasts.
+
+Props can use decoys, disguises, taunts and abilities to survive the hunt. Chaos events change the conditions during a round. Players can customize their character with hats, faces, face colors and emotes.
+
+Splatico has four game modes:
+
+- Infection: classic prop hunt. Props who are caught respawn as hunters.
+- Last Stand: no respawns. Teams swap sides each round in a best-of series.
+- Rush: props share a pool of respawn tickets. Hunters must use them up before time runs out.
+- VIP: random props are secretly picked as VIPs. Hunters try to find them while the other props keep them safe, in a best-of series.
+
+The built-in voxel map editor lets players build maps, import custom blocks, props, assets and decals, and share maps with that custom content on Steam Workshop.
+
+## Pages
+
+- [Home](https://splaticogame.com/): overview of the game, screenshots, game modes, chaos events, the map editor and community links.
+- [Game modes](https://splaticogame.com/game-modes.html): rules for Infection, Last Stand, Rush and VIP.
+- [Map editor](https://splaticogame.com/map-editor.html): building voxel maps, importing custom content and sharing maps on Steam Workshop.
+
+## Press
+
+- [Press kit](https://splaticogame.com/splatico-press-kit.zip): logos, screenshots, character renders and a fact sheet.
+- Press, YouTubers and streamers can contact press@splaticogame.com.
+
+## Community
+
+- [Discord](https://discord.gg/P88g5WmsQS)
+- [X](https://x.com/splatico_game)
+- [Reddit](https://www.reddit.com/r/Splatico/)
+- [Splatico Wiki](https://splatico.fandom.com/wiki/Splatico_Wiki)
+
+## Optional
+
+- [Getting started with custom maps](https://splatico.fandom.com/wiki/Getting_Started)
+- [Splatico Blockbench plugin](https://splatico.fandom.com/wiki/Splatico_Blockbench_Plugin): create custom props and assets.

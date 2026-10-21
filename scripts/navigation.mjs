@@ -5,7 +5,7 @@ const gamePages = [
   ['game-modes.html', 'Game modes'],
   ['map-editor.html', 'Map editor'],
 ];
-const communityLinks = [
+export const communityLinks = [
   ['https://discord.gg/P88g5WmsQS', 'Discord', 'discord', 'button-discord'],
   ['https://x.com/splatico_game', 'Follow', 'x', 'button-orange'],
   ['https://www.reddit.com/r/Splatico/', 'Reddit', 'reddit', 'button-reddit'],

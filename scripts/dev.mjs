@@ -15,7 +15,7 @@ const types = {
   '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.webp': 'image/webp', '.ttf': 'font/ttf', '.zip': 'application/zip',
-  '.txt': 'text/plain; charset=utf-8', '.ico': 'image/x-icon',
+  '.txt': 'text/plain; charset=utf-8', '.ico': 'image/x-icon', '.xml': 'application/xml; charset=utf-8',
 };
 let version = Date.now();
 let build;

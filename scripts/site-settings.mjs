@@ -1,16 +1,20 @@
 import { readFileSync } from 'node:fs';
 
-const config = JSON.parse(readFileSync(new URL('../src/site-config.json', import.meta.url), 'utf8'));
+export const config = JSON.parse(readFileSync(new URL('../src/site-config.json', import.meta.url), 'utf8'));
 if (!['wishlist', 'buy'].includes(config.steamButtonMode)) {
   throw new Error('src/site-config.json: steamButtonMode must be "wishlist" or "buy".');
 }
 if (!Number.isInteger(config.launchYear) || config.launchYear < 2000 || config.launchYear > 2100) {
   throw new Error('src/site-config.json: launchYear must be a year between 2000 and 2100.');
 }
+const siteUrl = new URL(config.siteUrl);
+if (siteUrl.protocol !== 'https:' || !siteUrl.pathname.endsWith('/')) {
+  throw new Error('src/site-config.json: siteUrl must be an HTTPS URL ending in /.');
+}
 if (new URL(config.steamUrl).protocol !== 'https:') {
   throw new Error('src/site-config.json: steamUrl must be an HTTPS URL.');
 }
-const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
+export const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
 

@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { pixelSurfaces } from './pixel-surfaces.mjs';
 import { siteHeader } from './navigation.mjs';
 import { applySiteSettings } from './site-settings.mjs';
+import { crawlerFiles, seoHead } from './seo.mjs';
 mkdirSync('dist', { recursive: true });
 const pages = readdirSync('src').filter(file => file.endsWith('.html'));
 // Keep published pages in sync with the HTML files in src.
@@ -14,8 +15,11 @@ mkdirSync('dist/downloads', { recursive: true });
 for (const file of ['blocks-import.png', 'props-import.png', 'assets-import.png', 'decals-placement.png']) copyFileSync(`src/assets/${file}`, `dist/assets/${file}`);
 copyFileSync('src/downloads/splatico.js', 'dist/downloads/splatico.js');
 for (const file of pages) {
-  const html = readFileSync(`src/${file}`, 'utf8').replace('<!-- SITE_HEADER -->', siteHeader(file));
-  writeFileSync(`dist/${file}`, pixelSurfaces(applySiteSettings(html)));
+  const html = applySiteSettings(readFileSync(`src/${file}`, 'utf8').replace('<!-- SITE_HEADER -->', siteHeader(file)));
+  writeFileSync(`dist/${file}`, pixelSurfaces(html.replace('</head>', `${seoHead(file, html)}</head>`)));
+}
+for (const [file, content] of Object.entries(crawlerFiles(pages))) {
+  writeFileSync(`dist/${file}`, content);
 }
 copyFileSync('src/main.js', 'dist/main.js');
 copyFileSync('src/pixel-rim.svg', 'dist/assets/pixel-rim.svg');
