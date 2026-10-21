@@ -91,38 +91,6 @@ galleryDialog.addEventListener('close', () => {
 
 }
 
-const cosmeticImage = document.querySelector('#cosmetic-image');
-if (cosmeticImage) {
-  const looks = [
-    ['hat-paint.png', 'PAINT BUCKET', 'Character wearing a paint bucket hat'],
-    ['hat-crown.png', 'CROWN', 'Character wearing a crown'],
-    ['hat-mushroom.png', 'MUSHROOM', 'Character wearing a mushroom hat'],
-    ['hat-cat.png', 'CAT EARS', 'Character wearing cat ears'],
-    ['face-happy.png', 'HAPPY FACE', 'Character with a happy face'],
-    ['face-angry.png', 'ANGRY FACE', 'Character with an angry face'],
-    ['face-wink.png', 'WINK', 'Character with a winking face'],
-  ];
-  let look = 0;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let visible = false;
-  let interacting = false;
-  const carousel = document.querySelector('.cosmetic-carousel');
-  function showLook(index) {
-    look = (index + looks.length) % looks.length;
-    cosmeticImage.src = `./assets/${looks[look][0]}`;
-    cosmeticImage.alt = looks[look][2];
-    document.querySelector('#cosmetic-name').textContent = looks[look][1];
-  }
-  document.querySelector('#cosmetic-prev').addEventListener('click', () => showLook(look - 1));
-  document.querySelector('#cosmetic-next').addEventListener('click', () => showLook(look + 1));
-  carousel.addEventListener('mouseenter', () => interacting = true);
-  carousel.addEventListener('mouseleave', () => interacting = false);
-  carousel.addEventListener('focusin', () => interacting = true);
-  carousel.addEventListener('focusout', event => { if (!carousel.contains(event.relatedTarget)) interacting = false; });
-  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }, { threshold: 0.2 }).observe(carousel);
-  setInterval(() => { if (visible && !reducedMotion && !interacting && !document.hidden) showLook(look + 1); }, 4000);
-}
-
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const parallaxImages = [...document.querySelectorAll('[data-parallax]')];
   let pending = false;

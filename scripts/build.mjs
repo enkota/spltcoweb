@@ -1,17 +1,19 @@
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { buildFeaturePages } from './pages.mjs';
 import { pixelSurfaces } from './pixel-surfaces.mjs';
 import { siteHeader } from './navigation.mjs';
 mkdirSync('dist', { recursive: true });
+// Remove retired pages from existing output directories.
+for (const file of ['customization.html', 'customisation.html']) rmSync(`dist/${file}`, { force: true });
 mkdirSync('dist/downloads', { recursive: true });
 for (const file of ['blocks-import.png', 'props-import.png', 'assets-import.png', 'decals-placement.png']) copyFileSync(`src/assets/${file}`, `dist/assets/${file}`);
 copyFileSync('src/downloads/splatico.js', 'dist/downloads/splatico.js');
 writeFileSync('dist/index.html', readFileSync('src/index.html', 'utf8').replace('<!-- SITE_HEADER -->', siteHeader()));
 copyFileSync('src/main.js', 'dist/main.js');
 buildFeaturePages();
-for (const file of ['index.html', 'map-editor.html', 'customization.html', 'customisation.html', 'game-modes.html', 'chaos.html']) {
+for (const file of ['index.html', 'map-editor.html', 'game-modes.html', 'chaos.html']) {
   writeFileSync(`dist/${file}`, pixelSurfaces(readFileSync(`dist/${file}`, 'utf8')));
 }
 copyFileSync('src/pixel-rim.svg', 'dist/assets/pixel-rim.svg');
@@ -23,7 +25,7 @@ if (result.status === 0) {
   const version = file => createHash('sha256').update(readFileSync(`dist/${file}`)).digest('hex').slice(0, 12);
   const css = version('styles.css');
   const js = version('main.js');
-  for (const file of ['index.html', 'map-editor.html', 'customization.html', 'customisation.html', 'game-modes.html', 'chaos.html']) {
+  for (const file of ['index.html', 'map-editor.html', 'game-modes.html', 'chaos.html']) {
     const html = readFileSync(`dist/${file}`, 'utf8')
       .replace('href="./styles.css"', `href="./styles.css?v=${css}"`)
       .replace('src="./main.js"', `src="./main.js?v=${js}"`);

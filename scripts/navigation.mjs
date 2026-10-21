@@ -2,7 +2,6 @@ const gamePages = [
   ['index.html', 'OVERVIEW', '#about'],
   ['game-modes.html', 'GAME MODES'],
   ['chaos.html', 'CHAOS MODIFIERS'],
-  ['customization.html', 'CUSTOMIZATION'],
   ['map-editor.html', 'MAP EDITOR'],
 ];
 const communityLinks = [
